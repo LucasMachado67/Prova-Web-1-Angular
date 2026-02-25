@@ -1,0 +1,16 @@
+@use '../../../styles/variables.scss' as variables;
+
+.nav-item {
+      width: 100%;
+      height: 100%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: white;
+      background-color: variables.$primary-color;
+        font-weight: bold;
+        font-size: larger;
+      &:hover{
+        background-color: variables.$secondary-color;
+      }
+}

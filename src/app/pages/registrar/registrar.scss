@@ -1,0 +1,60 @@
+@use '../../../styles/variables.scss' as variables;
+.container{
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    background-color: rgb(228, 228, 228);
+    
+    .title{
+        margin-bottom: 20px;
+    }
+    .informations{
+
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        .primary-content{
+
+            .data{
+                height: 30px;
+                width: 200px;
+                margin-bottom: 30px;
+                border: 3px solid variables.$secondary-color;
+                padding: 5px;
+                border-radius: 10px;
+            }
+            
+        }
+        .secondary-content{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            img{
+                height: 200px;
+                width: 200px;
+                margin-bottom: 10px;
+            }
+
+            button{
+                padding: 5px;
+                width: 100px;
+                align-content: center;
+                height: 40px;
+                border-radius: 10px;
+                border: 3px solid variables.$secondary-color;
+                background-color: variables.$primary-color;
+                cursor: pointer;
+                color: variables.$secondary-text-color;
+                font-size: large;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                &:hover{
+                    background-color: variables.$secondary-color;
+                }
+            }
+
+        }
+
+    }
+    
+}
