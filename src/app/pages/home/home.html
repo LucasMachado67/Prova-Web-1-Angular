@@ -1,5 +1,9 @@
 <div class="container">
     <app-header></app-header>
+
+    @for (item of myTasks; track $index) {
+        <app-card-component subject="{{item.subject}}" date="{{item.date}}" id="{{item.id}}"></app-card-component>
+    }
 </div>
 
 

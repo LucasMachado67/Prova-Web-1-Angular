@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+  <div class="container">
+  
+    <div class="display">
+      @if(activeDeleteCard){
+        <div class="modal-overlay">
+          <div class="confirmDelete" >
+            <span>Are you sure?</span>
+            <div class="actions">
+              <button class="btnActions delete" (click)="delete()">Sim</button>
+              <button class="btnActions edit" (click)="activeDeleteCard = false">Não</button>
+            </div>
+          </div>
+        </div>
+      }
+      <h2>Task Details</h2>
+      <div class="primary-info">
+        <p class="info">{{this.task.subject}}</p>
+        <p class="info">{{this.task.status}}</p>
+        <p class="info">{{this.task.date | date: 'dd/MM/yyyy'}}</p>
+      </div>
+      <div class="secondary-info">
+        <h3>Detailed description</h3>
+        <p class="info">{{this.task.description}}</p>
+      </div>
+      <div class="actions">
+        <button class="btnActions edit" (click)="goToUpdatePage()">Edit</button>
+        <button class="btnActions delete" (click)="activeDeleteCard = true">Delete</button>
+        <button class="btnActions return" (click)="return()">Return</button>
+      </div>
+    </div>
+  </div>

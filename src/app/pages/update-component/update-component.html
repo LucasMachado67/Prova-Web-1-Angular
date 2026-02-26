@@ -5,10 +5,11 @@
 
     <div class="informations">
         <form  [formGroup]="taskForm" class="primary-content">
-            <input minlength="3" class="data" type="text" placeholder="Name" required formControlName="subject">
+            <input minlength="3" class="data" type="text" placeholder="Name" required formControlName="subject" value="{{this.task.subject}}">
             <textarea  minlength="10" class="data" placeholder="Description" required maxlength="200" formControlName="description"></textarea>
             <input  class="data" type="date" placeholder="Date" required formControlName="date">
-            <button (click)="submit()">Registrar</button>
+            <button (click)="submit()">Confirm</button>
+            <button (click)="cancel()">Cancel</button>
         </form>
     </div> 
 </div>
