@@ -3,6 +3,7 @@ import { Header } from '../../components/header/header';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StorageService } from '../../service/storage-service';
 import { Task } from '../../models/Task';
+import { TaskStatus } from '../../Enum/TaskStatus';
 
 @Component({
   selector: 'app-registrar',
@@ -17,7 +18,7 @@ export class Registrar {
   constructor(private fb: FormBuilder, private service:StorageService) {
     this.taskForm = this.fb.group({
       subject: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      description: [''],
+      description: ['', [Validators.required, Validators.minLength(3)]],
       date: ['', [Validators.required]]
     });
   }
@@ -30,7 +31,7 @@ export class Registrar {
     const taskData: Task = {
       ...this.taskForm.value,
       id: Date.now(),
-      status: 'scheduled'
+      status: TaskStatus.Pending
     };
     this.service.addTask(taskData);
     this.taskForm.reset();

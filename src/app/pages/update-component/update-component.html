@@ -5,11 +5,16 @@
 
     <div class="informations">
         <form  [formGroup]="taskForm" class="primary-content">
-            <input minlength="3" class="data" type="text" placeholder="Name" required formControlName="subject" value="{{this.task.subject}}">
+            <input minlength="3" class="data" type="text" placeholder="Name" required formControlName="subject" >
             <textarea  minlength="10" class="data" placeholder="Description" required maxlength="200" formControlName="description"></textarea>
             <input  class="data" type="date" placeholder="Date" required formControlName="date">
-            <button (click)="submit()">Confirm</button>
-            <button (click)="cancel()">Cancel</button>
+            <select name="status" id="status" class="data" formControlName="status">
+                @for (status of taskStatuses; track status) {
+                    <option [value]="status" selected>{{ status }}</option>
+                }
+            </select>
+            <button class="actions" (click)="submit()">Confirm</button>
+            <button class="actions btn-cancel" (click)="cancel()">Cancel</button>
         </form>
     </div> 
 </div>

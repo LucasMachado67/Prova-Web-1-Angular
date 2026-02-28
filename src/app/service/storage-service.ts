@@ -40,8 +40,19 @@ export class StorageService {
     this.saveTasks(tasks);
   }
 
-  update(id:number, newTask:any){
-    
+  update(id:number, updatedTask:any){
+
+    let tasks = this.getAll();
+
+    const index = tasks.findIndex(task => task.id === id);
+
+    if (index !== -1) {
+
+      tasks[index] = { ...updatedTask, id: id };
+      this.saveTasks(tasks);
+    }else {
+      console.error(`Task Not Found`);
+    }
   }
 
 }

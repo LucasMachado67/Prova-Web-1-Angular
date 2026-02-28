@@ -4,6 +4,8 @@ import { StorageService } from '../../service/storage-service';
 import { Task } from '../../models/Task';
 import { Header } from "../../components/header/header";
 import { ActivatedRoute, Router } from '@angular/router';
+import { TaskStatus } from '../../Enum/TaskStatus';
+
 
 @Component({
   selector: 'app-update-component',
@@ -15,13 +17,14 @@ export class UpdateComponent implements OnInit{
 
   task: any;
   taskForm!: FormGroup;
+  public taskStatuses = Object.values(TaskStatus);
 
   constructor(private fb: FormBuilder, private service:StorageService, private router:Router, private routeActive:ActivatedRoute) {
     this.taskForm = this.fb.group({
       subject: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       description: [''],
       date: ['', [Validators.required]],
-      schedule: ['',[Validators.required]]
+      status: ['', [Validators.required]]
     });
   }
   
@@ -36,6 +39,7 @@ export class UpdateComponent implements OnInit{
       };
       this.service.update(this.task.id, taskData);
       this.taskForm.reset();
+      this.router.navigate(['/task/', this.task.id]);
       alert("task saved")
   }
 
@@ -49,6 +53,16 @@ export class UpdateComponent implements OnInit{
   }
   ngOnInit(): void {
     this.loadTask();
+
+    if(this.task){
+      console.log('Status da task vindo do service:', this.task.status);
+      this.taskForm.patchValue({
+        subject: this.task.subject,
+        description: this.task.description,
+        date: this.task.date,
+        status: this.task.status
+      })
+    }
   }
 
 
